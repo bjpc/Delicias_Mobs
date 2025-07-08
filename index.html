@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicias Mobs - ¡Sabor Explosivo! Mermeladas y Mantequillas Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            /* MrBeast-ish Colors - Bold and Punchy */
+            --primary-yellow: #FFD700; /* Bright Yellow */
+            --secondary-red: #E74C3C; /* Energetic Red */
+            --dark-blue: #2C3E50; /* Deep, professional dark for text/backgrounds */
+            --light-gray: #ECF0F1; /* Soft background */
+            --white: #FFFFFF;
+            --text-dark: #34495E; /* Slightly lighter dark for body text */
+            --accent-green: #2ECC71; /* A fresh green for secondary accents */
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: var(--light-gray);
+            color: var(--text-dark);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* --- Global Utilities --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px; /* More padding for better spacing */
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.8em; /* Bigger, bolder titles */
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+            padding-bottom: 20px;
+            text-transform: uppercase; /* MrBeast style */
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 120px; /* Wider underline */
+            height: 6px; /* Thicker underline */
+            background-color: var(--primary-yellow);
+            border-radius: 3px;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            background-color: var(--primary-yellow);
+            color: var(--dark-blue);
+            padding: 18px 40px; /* Larger buttons */
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3em; /* Larger text */
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2); /* More prominent shadow */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-cta:hover {
+            background-color: #FFC000; /* Slightly darker yellow */
+            transform: translateY(-5px) scale(1.02); /* More pronounced lift */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        /* --- Header / Navigation --- */
+        header {
+            background-color: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: fadeInDown 0.8s ease-out; /* Simple entry animation */
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--dark-blue);
+        }
+
+        .logo img {
+            height: 65px; /* Slightly larger logo */
+            width: 65px;
+            border-radius: 50%;
+            margin-right: 12px;
+            object-fit: cover;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .logo span {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5em; /* Bold logo text */
+            font-weight: 800;
+            color: var(--secondary-red);
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 35px; /* More spacing */
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-blue);
+            font-weight: 600;
+            font-size: 1.15em; /* Slightly larger nav links */
+            transition: color 0.3s ease, transform 0.2s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary-yellow);
+            transition: width 0.3s ease-out;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-yellow);
+            transform: translateY(-2px);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url('2.jpeg') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 180px 25px; /* More vertical space */
+            position: relative;
+            overflow: hidden; /* For background animations */
+        }
+
+        /* Subtle background animation */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 70%);
+            animation: pulseBackground 15s infinite alternate;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1; /* Ensure content is above pseudo-element */
+            animation: fadeInUp 1s ease-out; /* Content entry animation */
+        }
+
+        .hero-section h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 5.5em; /* HUGE impact text */
+            margin-bottom: 25px;
+            line-height: 1.1;
+            text-shadow: 3px 3px 8px rgba(0,0,0,0.6);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        .hero-section p {
+            font-size: 1.7em; /* Large descriptive text */
+            max-width: 900px;
+            margin: 0 auto 50px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+            font-weight: 400;
+        }
+        /* Eslogan en Hero Section */
+        .hero-section .slogan {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            font-weight: 600;
+            color: var(--primary-yellow); /* Color para resaltar */
+            margin-top: -30px; /* Acercar al título principal */
+            margin-bottom: 40px; /* Espacio antes del botón */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            animation: fadeInUp 1.2s ease-out 0.2s backwards; /* Retraso para que aparezca después del título */
+        }
+
+
+        /* --- Offer Banner --- */
+        .offer-banner {
+            background-color: var(--secondary-red); /* Red for urgency */
+            color: var(--white);
+            text-align: center;
+            padding: 20px 25px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8em; /* Large text */
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: bounceIn 1s ease-out; /* Eye-catching animation */
+            position: relative;
+            z-index: 999; /* Ensure it's above other content but below sticky header */
+        }
+        .offer-banner span {
+            color: var(--primary-yellow); /* Yellow for highlight */
+        }
+
+        /* --- Featured Products Section --- */
+        .featured-products-section {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Slightly wider cards */
+            gap: 50px; /* More space between cards */
+        }
+
+        .product-card {
+            background-color: var(--light-gray); /* Lighter background for cards */
+            border-radius: 15px; /* More rounded corners */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 2px solid var(--primary-yellow); /* Yellow border */
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) scale(1.03); /* More pronounced lift and slight scale */
+            box-shadow: 0 18px 40px rgba(0,0,0,0.2);
+            border-color: var(--secondary-red); /* Red border on hover */
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 350px; /* Taller images */
+            object-fit: cover;
+            border-bottom: 3px solid var(--primary-yellow); /* Thicker border */
+            transition: border-color 0.3s ease;
+        }
+        .product-card:hover img {
+            border-color: var(--secondary-red);
+        }
+
+        .product-info {
+            padding: 30px; /* More internal padding */
+        }
+
+        .product-info h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5em; /* Bigger product titles */
+            font-weight: 700;
+            color: var(--secondary-red);
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .product-info p {
+            font-size: 1.2em; /* Larger description text */
+            color: var(--text-gray);
+            margin-bottom: 25px;
+        }
+
+        /* Styles for price options */
+        .price-options {
+            margin-bottom: 25px;
+            display: flex;
+            flex-direction: column; /* Stack options */
+            gap: 10px; /* Space between options */
+        }
+        .price-option {
+            font-size: 1.8em; /* Slightly smaller than main price, but still prominent */
+            font-weight: 800;
+            color: var(--accent-green);
+            display: flex; /* Align text and price */
+            justify-content: center;
+            align-items: baseline;
+        }
+        .price-option .size {
+            font-size: 0.7em; /* Smaller for size text */
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-right: 10px;
+        }
+        .price-option .price {
+            font-size: 1em; /* Relative to parent .price-option */
+            font-weight: 800;
+            color: var(--accent-green);
+        }
+
+
+        /* --- Why Choose Us Section --- */
+        .why-choose-us-section {
+            padding: 100px 0;
+            background-color: var(--dark-blue); /* Dark background */
+            color: var(--white);
+            text-align: center;
+        }
+
+        .why-choose-us-section .section-title {
+            color: var(--white);
+        }
+        .why-choose-us-section .section-title::after {
+            background-color: var(--primary-yellow);
+        }
+
+        .features-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-item {
+            flex-basis: 300px; /* Fixed width items */
+            background-color: rgba(255,255,255,0.1); /* Slightly transparent white */
+            padding: 30px;
+            border-radius: 12px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .feature-item:hover {
+            background-color: rgba(255,255,255,0.15);
+            transform: translateY(-8px);
+        }
+
+        .feature-item i {
+            font-size: 4em; /* Large icons */
+            color: var(--primary-yellow);
+            margin-bottom: 20px;
+        }
+
+        .feature-item h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8em;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .feature-item p {
+            font-size: 1.1em;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* --- About Us Section --- */
+        .about-us-section {
+            padding: 100px 0;
+            background-color: var(--light-gray);
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 60px; /* More spacing */
+        }
+
+        .about-text {
+            flex: 2; /* Takes more space */
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8em;
+            color: var(--secondary-red);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .about-text p {
+            font-size: 1.2em;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .about-image-wrapper {
+            flex: 1; /* Takes less space */
+            min-width: 250px;
+            text-align: center;
+            position: relative;
+        }
+
+        .about-image-wrapper img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+            transform: rotate(-5deg); /* Slight rotation for dynamic feel */
+            transition: transform 0.4s ease;
+        }
+        .about-image-wrapper img:hover {
+            transform: rotate(0deg) scale(1.03); /* Straighten and zoom on hover */
+        }
+        
+        /* --- Contact Section --- */
+        .contact-section {
+            padding: 100px 0;
+            background-color: var(--primary-yellow); /* Bright yellow background */
+            color: var(--dark-blue);
+            text-align: center;
+        }
+
+        .contact-section .section-title {
+            color: var(--dark-blue);
+        }
+        .contact-section .section-title::after {
+            background-color: var(--secondary-red); /* Red underline */
+        }
+
+        .contact-info p {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .contact-info a {
+            color: var(--secondary-red);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--dark-blue);
+            text-decoration: underline;
+        }
+
+        .social-links {
+            margin-top: 40px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            color: var(--dark-blue);
+            font-size: 3.5em; /* Larger social icons */
+            margin: 0 20px;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-red);
+            transform: translateY(-8px) scale(1.1);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--dark-blue);
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 40px 0;
+            font-size: 1em;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a {
+            color: var(--primary-yellow);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #FFC000;
+        }
+
+        /* --- Keyframe Animations --- */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulseBackground {
+            0% { background-size: 100% 100%; opacity: 0.05; }
+            50% { background-size: 120% 120%; opacity: 0.1; }
+            100% { background-size: 100% 100%; opacity: 0.05; }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .section-title {
+                font-size: 3em;
+            }
+            .hero-section h1 {
+                font-size: 4em;
+            }
+            .hero-section p {
+                font-size: 1.4em;
+            }
+            .hero-section .slogan {
+                font-size: 1.5em;
+            }
+            .offer-banner {
+                font-size: 1.5em;
+            }
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 30px;
+            }
+            .product-card img {
+                height: 300px;
+            }
+            .product-info h3 {
+                font-size: 2em;
+            }
+            .product-info .price-option {
+                font-size: 1.6em; /* Adjust price option size */
+            }
+            .about-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .about-image-wrapper {
+                order: -1; /* Image appears first on smaller screens */
+            }
+            .about-image-wrapper img {
+                transform: rotate(0deg); /* No rotation on smaller screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+            }
+            .logo {
+                margin-bottom: 15px;
+            }
+            .nav-links {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-links li {
+                margin: 0 10px 10px 10px;
+            }
+            .hero-section {
+                padding: 120px 20px;
+            }
+            .hero-section h1 {
+                font-size: 3em;
+            }
+            .hero-section p {
+                font-size: 1.2em;
+            }
+            .hero-section .slogan {
+                font-size: 1.2em;
+            }
+            .section-title {
+                font-size: 2.5em;
+                margin-bottom: 50px;
+            }
+            .btn-cta {
+                padding: 15px 30px;
+                font-size: 1.1em;
+            }
+            .offer-banner {
+                font-size: 1.2em;
+                padding: 15px 20px;
+            }
+            .features-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .feature-item {
+                width: 90%; /* Take more width on small screens */
+            }
+            .product-info h3 {
+                font-size: 1.8em;
+            }
+            .product-info .price-option {
+                font-size: 1.4em; /* Adjust price option size */
+            }
+            .social-links a {
+                font-size: 3em;
+                margin: 0 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo img {
+                height: 55px;
+                width: 55px;
+            }
+            .logo span {
+                font-size: 2em;
+            }
+            .hero-section h1 {
+                font-size: 2.2em;
+            }
+            .hero-section p {
+                font-size: 1em;
+            }
+            .hero-section .slogan {
+                font-size: 1em;
+            }
+            .section-title {
+                font-size: 2em;
+                margin-bottom: 30px;
+            }
+            .offer-banner {
+                font-size: 1em;
+                padding: 10px 15px;
+            }
+            .product-card {
+                margin: 0 10px; /* Some side margin for very small screens */
+            }
+            .product-card img {
+                height: 250px;
+            }
+            .product-info h3 {
+                font-size: 1.6em;
+            }
+            .product-info .price-option {
+                font-size: 1.2em; /* Adjust price option size */
+            }
+            .contact-info p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#hero" class="logo">
+                    <img src="WhatsApp Image 2025-07-08 at 12.57.27 AM.jpg" alt="Delicias Mobs Logo">
+                    <span>Delicias Mobs</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#calidad">Calidad</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="offer-banner">
+        <div class="container">
+            <p><i class="fas fa-truck-fast"></i> ¡OFERTA EXCLUSIVA! DELIVERY GRATIS PARA LOS <span>PRIMEROS 10 CLIENTES</span> <i class="fas fa-star"></i></p>
+        </div>
+    </section>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container hero-content">
+                <h1>¡DELICIAS MOBS: EL SABOR QUE ROMPE ESQUEMAS!</h1>
+                <p class="slogan">“Sabor natural que nutre y conecta”</p>
+                <p>Mermeladas de Piña, Guayaba y Mantequilla de Maní. Ingredientes reales. Sabor inigualable. ¡Transforma tu día!</p>
+                <a href="#productos" class="btn-cta">EXPLORA AHORA</a>
+            </div>
+        </section>
+
+        <section id="productos" class="featured-products-section">
+            <div class="container">
+                <h2 class="section-title">NUESTROS PRODUCTOS ESTRELLA</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="WhatsApp Image 2025-07-08 at 12.56.19 AM.jpeg" alt="Mermelada de Piña Delicias Mobs">
+                        <div class="product-info">
+                            <h3>Mermelada de Piña</h3>
+                            <p>Explosión tropical en cada cucharada. Dulce, ácida y refrescante, perfecta para cualquier momento.</p>
+                            <div class="price-options">
+                                <span class="price-option"><span class="size">250g:</span> <span class="price">S/ 15.00</span></span>
+                                <span class="price-option"><span class="size">500g:</span> <span class="price">S/ 30.00</span></span>
+                            </div>
+                            <a href="https://wa.me/51987654321?text=¡Hola!%20Quiero%20comprar%20Mermelada%20de%20Piña." class="btn-cta" target="_blank">¡LO QUIERO!</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="WhatsApp Image 2025-07-08 at 12.56.19 AM.jpeg" alt="Mermelada de Guayaba Delicias Mobs">
+                        <div class="product-info">
+                            <h3>Mermelada de Guayaba</h3>
+                            <p>El sabor auténtico de la guayaba. Exótica, suave y con un aroma que te transporta. ¡Irresistible!</p>
+                            <div class="price-options">
+                                <span class="price-option"><span class="size">250g:</span> <span class="price">S/ 15.00</span></span>
+                                <span class="price-option"><span class="size">500g:</span> <span class="price">S/ 30.00</span></span>
+                            </div>
+                            <a href="https://wa.me/51987654321?text=¡Hola!%20Quiero%20comprar%20Mermelada%20de%20Guayaba." class="btn-cta" target="_blank">¡LO QUIERO!</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="WhatsApp Image 2025-07-08 at 12.56.19 AM.jpeg" alt="Mantequilla de Maní Delicias Mobs">
+                        <div class="product-info">
+                            <h3>Mantequilla de Maní</h3>
+                            <p>Pura energía y sabor natural. Cremosa y deliciosa, el complemento perfecto para tus comidas o directo del frasco.</p>
+                            <div class="price-options">
+                                <span class="price-option"><span class="size">250g:</span> <span class="price">S/ 15.00</span></span>
+                                <span class="price-option"><span class="size">500g:</span> <span class="price">S/ 30.00</span></span>
+                            </div>
+                            <a href="https://wa.me/51987654321?text=¡Hola!%20Quiero%20comprar%20Mantequilla%20de%20Maní." class="btn-cta" target="_blank">¡LO QUIERO!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="calidad" class="why-choose-us-section">
+            <div class="container">
+                <h2 class="section-title">¿POR QUÉ ELEGIR DELICIAS MOBS?</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-seedling"></i>
+                        <h3>INGREDIENTES FRESCOS</h3>
+                        <p>Seleccionamos solo la mejor fruta y maní, directamente del campo a tu hogar.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h3>ELABORACIÓN ARTESANAL</h3>
+                        <p>Cada tarro se prepara con pasión y cuidado, garantizando un sabor casero y auténtico.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-leaf"></i>
+                        <h3>100% NATURAL</h3>
+                        <p>Sin conservantes, aditivos ni colorantes artificiales. ¡Pura naturaleza en cada bocado!</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-award"></i>
+                        <h3>CALIDAD GARANTIZADA</h3>
+                        <p>Nos enorgullece ofrecerte productos premium que superarán tus expectativas de sabor.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="nosotros" class="about-us-section">
+            <div class="container">
+                <h2 class="section-title">DETRÁS DE CADA DELICIA</h2>
+                <div class="about-content">
+                    <div class="about-image-wrapper">
+                        <img src="WhatsApp Image 2025-07-08 at 12.55.15 AM.jpeg" alt="Proceso de Elaboración Delicias Mobs">
+                    </div>
+                    <div class="about-text">
+                        <h3>NUESTRA MISIÓN: LLEVAR SABOR GENUINO A TU MESA.</h3>
+                        <p>Somos un emprendimiento piurano que elabora mantequilla de maní y mermeladas artesanales 100% naturales, sin aditivos. Promovemos alimentación consciente, comercio justo y envases sostenibles.</p>
+                        <p>En Delicias Mobs, creemos que la buena comida comienza con ingredientes de verdad y una dedicación inquebrantable. Desde nuestra humilde cocina en Paita, Piura, hemos perfeccionado recetas que resaltan el sabor natural de cada fruta y la cremosidad del maní.</p>
+                        <p>No somos solo una marca, somos una familia apasionada por crear experiencias culinarias memorables. Cada vez que abres un tarro de Delicias Mobs, estás eligiendo frescura, tradición y un compromiso con la calidad que puedes saborear. 🍍🥜✨ ¡Hecho en Piura con amor y responsabilidad!</p>
+                        <a href="#contacto" class="btn-cta" style="background-color: var(--secondary-red); color: var(--white);">CONTÁCTANOS</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">¿LISTO PARA TU PRÓXIMA DELICIA?</h2>
+                <div class="contact-info">
+                    <p>¡No esperes más para disfrutar de nuestros sabores inigualables!</p>
+                    <p>Estamos disponibles para atenderte.</p>
+                    <p><i class="fas fa-envelope"></i> Email: <a href="mailto:info@deliciasmobs.com">info@deliciasmobs.com</a></p>
+                    <p><i class="fas fa-phone-alt"></i> Teléfono: <a href="tel:+51987654321">+51 987 654 321</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Ubicación: Paita, Piura, Perú.</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://facebook.com/deliciasmobs" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://instagram.com/deliciasmobs" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/51987654321" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Delicias Mobs. Todos los derechos reservados. <span style="color: var(--primary-yellow);">¡Hecho para el sabor!</span></p>
+        </div>
+    </footer>
+
+</body>
+</html>
